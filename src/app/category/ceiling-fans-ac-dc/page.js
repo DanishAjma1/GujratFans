@@ -28,7 +28,7 @@ const ProductGrid = () => {
     "ceiling-fans-dc",
     "bracket-fans",
     "pedestal-fans",
-    "Exhaust-fans",
+    "exhaust-fans",
   ];
 
   const handleQuantityChange = (index, delta) => {
