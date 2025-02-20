@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gray-800 text-white py-8 mt-12">
+    <footer className="bg-black text-white py-8 mt-12">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -50,7 +50,7 @@ export default function Footer() {
             <p className="text-gray-400">
               Plot No. 12, Industrial Area
               <br />
-              Gujart - 360003
+              Gujrat - 40700
               <br />
               Phone: +91 98765 43210
             </p>

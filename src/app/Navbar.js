@@ -11,7 +11,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gray-800 text-white p-4">
+    <nav className="bg-black text-white p-4">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo */}
         <div className="flex items-center">
@@ -22,8 +22,8 @@ export default function Navbar() {
             height={40}
             className="mr-2"
           />
-          <Link href="/" className="text-2xl font-bold">
-            Gujarat Fans
+          <Link href="/" className="text-2xl font-bold font-serif">
+            Gujrat Fans
           </Link>
         </div>
 
@@ -50,16 +50,16 @@ export default function Navbar() {
             isMenuOpen ? "block" : ""
           } md:block`}
         >
-          <Link href="/" className="hover:text-blue-300">
+          <Link href="/" className="hover:text-blue-300 font-serif hover:px-1">
             Home
           </Link>
-          <Link href="/ProductCard" className="hover:text-blue-300">
+          <Link href="/ProductCard" className="hover:text-blue-300 hover:px-1 font-serif">
             Products
           </Link>
-          <Link href="/About" className="hover:text-blue-300">
+          <Link href="/About" className="hover:text-blue-300 font-serif hover:px-1">
             About
           </Link>
-          <Link href="/Contact" className="hover:text-blue-300">
+          <Link href="/Contact" className="hover:text-blue-300 font-serif hover:px-1">
             Contact
           </Link>
         </div>
@@ -69,24 +69,24 @@ export default function Navbar() {
       <div
         className={`md:hidden ${isMenuOpen ? "block" : "hidden"} bg-gray-700`}
       >
-        <Link href="/" className="block px-4 py-2 text-white hover:bg-gray-600">
+        <Link href="/" className="block px-4 py-2 text-white hover:bg-gray-600 font-serif">
           Home
         </Link>
         <Link
           href="/ProductCard"
-          className="block px-4 py-2 text-white hover:bg-gray-600"
+          className="block px-4 py-2 text-white hover:bg-gray-600 font-serif"
         >
           Products
         </Link>
         <Link
           href="/About"
-          className="block px-4 py-2 text-white hover:bg-gray-600"
+          className="block px-4 py-2 text-white hover:bg-gray-600 font-serif"
         >
           About
         </Link>
         <Link
           href="/Contact"
-          className="block px-4 py-2 text-white hover:bg-gray-600"
+          className="block px-4 py-2 text-white hover:bg-gray-600 font-serif"
         >
           Contact
         </Link>
