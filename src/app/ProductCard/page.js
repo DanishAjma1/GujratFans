@@ -4,17 +4,17 @@ import Image from "next/image";
 const categories = [
   {
     name: "Ceiling Fans AC",
-    image: "/Icons/mainlogo.png",
+    image: "/Images/ceiling-fan-ac.png",
     link: "/category/ceiling-fans-ac",
   },
   {
     name: "Ceiling Fans DC",
-    image: "/images/bracket_fan_icon.png",
+    image: "/Images/ceiling-fan-dc.png",
     link: "/category/ceiling-fans-dc",
   },
   {
     name: "Ceiling Fans AC-DC",
-    image: "/images/mist_fan_icon.png",
+    image: "/Images/ceiling-fan-ac-dc.png",
     link: "/category/ceiling-fans-ac-dc",
   },
   {

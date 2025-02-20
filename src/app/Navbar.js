@@ -65,28 +65,36 @@ export default function Navbar() {
         </div>
       </div>
 
-      
+      {/* Mobile Menu */}
+      {/* Mobile Menu */}
       <div
         className={`md:hidden ${isMenuOpen ? "block" : "hidden"} bg-gray-700`}
       >
-        <Link href="/" className="block px-4 py-2 text-white hover:bg-gray-600">
+        <Link
+          href="/"
+          className="block px-4 py-2 text-white hover:bg-gray-600"
+          onClick={() => setIsMenuOpen(false)}
+        >
           Home
         </Link>
         <Link
           href="/ProductCard"
           className="block px-4 py-2 text-white hover:bg-gray-600"
+          onClick={() => setIsMenuOpen(false)}
         >
           Products
         </Link>
         <Link
           href="/About"
           className="block px-4 py-2 text-white hover:bg-gray-600"
+          onClick={() => setIsMenuOpen(false)}
         >
           About
         </Link>
         <Link
           href="/Contact"
           className="block px-4 py-2 text-white hover:bg-gray-600"
+          onClick={() => setIsMenuOpen(false)}
         >
           Contact
         </Link>
