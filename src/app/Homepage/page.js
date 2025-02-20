@@ -3,15 +3,18 @@ import Link from "next/link";
 
 const features = [
   {
+    image: "/Icons/idea_7636263.png",
     title: "INNOVATION",
     description: "Our company is always on the lookout for new technology",
   },
   {
+    image: "/Icons/quality_10991786.png",
     title: "QUALITY PRODUCTS",
     description:
       "We satisfy our customers through our supreme quality products",
   },
   {
+    image: "/Icons/hand_16288493.png",
     title: "VARIETY",
     description:
       "Gujrat Fans offers the largest variety of customizable products.",
@@ -101,10 +104,11 @@ export default function Page() {
                 >
                   <div className="flex justify-center mb-4">
                     <Image
-                      src="/mainlogo.png"
-                      alt="GFC Logo"
-                      width={130}
-                      height={80}
+                      src={feature.image}
+                      alt={feature.title}
+                      width={105} 
+                      height={90} 
+                      className="rounded-t-lg cursor-pointer"
                     />
                   </div>
                   <h3 className="text-lg font-bold">{feature.title}</h3>
