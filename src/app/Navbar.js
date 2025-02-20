@@ -65,7 +65,7 @@ export default function Navbar() {
         </div>
       </div>
 
-      {/* Mobile Menu (when opened) */}
+      
       <div
         className={`md:hidden ${isMenuOpen ? "block" : "hidden"} bg-gray-700`}
       >
