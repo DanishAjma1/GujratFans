@@ -23,7 +23,7 @@ export default function Navbar() {
             className="mr-2"
           />
           <Link href="/" className="text-2xl font-bold">
-            Gujarat Fans
+            Gujrat Fans
           </Link>
         </div>
 
@@ -50,16 +50,16 @@ export default function Navbar() {
             isMenuOpen ? "block" : ""
           } md:block`}
         >
-          <Link href="/" className="hover:text-blue-300 hover:px-1">
+          <Link href="/" className="hover:text-blue-300">
             Home
           </Link>
-          <Link href="/ProductCard" className="hover:text-blue-300 hover:px-1">
+          <Link href="/ProductCard" className="hover:text-blue-300">
             Products
           </Link>
-          <Link href="/About" className="hover:text-blue-300 hover:px-1">
+          <Link href="/About" className="hover:text-blue-300">
             About
           </Link>
-          <Link href="/Contact" className="hover:text-blue-300 hover:px-1">
+          <Link href="/Contact" className="hover:text-blue-300">
             Contact
           </Link>
         </div>
