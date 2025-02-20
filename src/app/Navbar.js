@@ -50,16 +50,16 @@ export default function Navbar() {
             isMenuOpen ? "block" : ""
           } md:block`}
         >
-          <Link href="/" className="hover:text-blue-300">
+          <Link href="/" className="hover:text-blue-300 hover:px-1">
             Home
           </Link>
-          <Link href="/ProductCard" className="hover:text-blue-300">
+          <Link href="/ProductCard" className="hover:text-blue-300 hover:px-1">
             Products
           </Link>
-          <Link href="/About" className="hover:text-blue-300">
+          <Link href="/About" className="hover:text-blue-300 hover:px-1">
             About
           </Link>
-          <Link href="/Contact" className="hover:text-blue-300">
+          <Link href="/Contact" className="hover:text-blue-300 hover:px-1">
             Contact
           </Link>
         </div>
