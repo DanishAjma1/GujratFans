@@ -7,34 +7,28 @@ const ProductGrid = () => {
   const [products, setProducts] = useState([
     {
       name: "SAPPHIRE",
-      image: "/mainlogo.png", // Replace with actual image path
-      price: 9535, // Store price as number for easier calculations
-      link: "/product/sapphire",
+      image: "/Icons/mainlogo.png",
+      price: 9535,
     },
     {
       name: "MARVEL",
-      image: "/images/marvel_fan.jpg", // Replace with actual image path
+      image: "/images/marvel_fan.jpg",
       price: 9195,
-      link: "/product/marvel",
     },
     {
       name: "ALPHA WOODEN",
-      image: "/images/alpha_wooden_fan.jpg", // Replace with actual image path
+      image: "/images/alpha_wooden_fan.jpg",
       price: 9995,
-      link: "/product/alpha-wooden",
     },
   ]);
 
   const categories = [
-    "Ceiling Fans Ac",
-    "Ceiling Fans Inverter",
-    "Ceiling Fans Ac-Dc",
-    "Bracket Fans",
-    "Pedestal Fans",
-    "Exhaust Fans",
-    "Circumatic Fans",
-    "Floor Fans",
-    "False Ceiling Fans",
+    "ceiling-fans-ac",
+    "ceiling-fans-ac-dc",
+    "ceiling-fans-dc",
+    "bracket-fans",
+    "pedestal-fans",
+    "Exhaust-fans",
   ];
 
   const handleQuantityChange = (index, delta) => {
@@ -85,12 +79,9 @@ const ProductGrid = () => {
           </ul>
         </aside>
 
-        {/* Main Content */}
         <main className="w-full md:w-3/4">
           <div className="flex justify-between items-center mb-4">
-            <h1>
-              ceiling Fans AC {/* Make total count dynamic */}
-            </h1>
+            <h1>ceiling Fans AC</h1>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -99,17 +90,16 @@ const ProductGrid = () => {
                 key={product.name}
                 className="border rounded-lg shadow-md p-4 flex flex-col justify-between"
               >
-                <Link href={product.link}>
-                  <div className="relative h-48 mb-4 overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      layout="fill"
-                      objectFit="contain"
-                      className="rounded-t-lg cursor-pointer"
-                    />
-                  </div>
-                </Link>
+                <div className="relative h-48 mb-4 overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    layout="fill"
+                    objectFit="contain"
+                    className="rounded-t-lg cursor-pointer"
+                  />
+                </div>
+
                 <h2 className="text-lg font-medium mb-2 text-center">
                   {product.name}
                 </h2>

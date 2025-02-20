@@ -16,7 +16,7 @@ export default function Navbar() {
         {/* Logo */}
         <div className="flex items-center">
           <Image
-            src="/mainlogo.png"
+            src="/Icons/mainlogo.png"
             alt="GFC Logo"
             width={40}
             height={40}
@@ -56,7 +56,7 @@ export default function Navbar() {
           <Link href="/ProductCard" className="hover:text-blue-300">
             Products
           </Link>
-          <Link href="/about" className="hover:text-blue-300">
+          <Link href="/About" className="hover:text-blue-300">
             About
           </Link>
           <Link href="/Contact" className="hover:text-blue-300">
@@ -79,7 +79,7 @@ export default function Navbar() {
           Products
         </Link>
         <Link
-          href="/about"
+          href="/About"
           className="block px-4 py-2 text-white hover:bg-gray-600"
         >
           About

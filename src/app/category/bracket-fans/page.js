@@ -7,34 +7,28 @@ const ProductGrid = () => {
   const [products, setProducts] = useState([
     {
       name: "SAPPHIRE",
-      image: "/mainlogo.png", // Replace with actual image path
-      price: 9535, // Store price as number for easier calculations
-      link: "/product/sapphire",
+      image: "/Icons/mainlogo.png",
+      price: 9535,
     },
     {
       name: "MARVEL",
-      image: "/images/marvel_fan.jpg", // Replace with actual image path
+      image: "/images/marvel_fan.jpg",
       price: 9195,
-      link: "/product/marvel",
     },
     {
       name: "ALPHA WOODEN",
-      image: "/images/alpha_wooden_fan.jpg", // Replace with actual image path
+      image: "/images/alpha_wooden_fan.jpg",
       price: 9995,
-      link: "/product/alpha-wooden",
     },
   ]);
 
   const categories = [
-    "Ceiling Fans Ac",
-    "Ceiling Fans Inverter",
-    "Ceiling Fans Ac-Dc",
-    "Bracket Fans",
-    "Pedestal Fans",
-    "Exhaust Fans",
-    "Circumatic Fans",
-    "Floor Fans",
-    "False Ceiling Fans",
+    "ceiling-fans-ac",
+    "ceiling-fans-ac-dc",
+    "ceiling-fans-dc",
+    "bracket-fans",
+    "pedestal-fans",
+    "Exhaust-fans",
   ];
 
   const handleQuantityChange = (index, delta) => {
@@ -51,9 +45,15 @@ const ProductGrid = () => {
   };
 
   const handleBuyNow = (product) => {
-    const message = `Hi, I am interested in buying the ${product.name} fan. Quantity: ${product.quantity}. Price: PKR ${product.price * product.quantity}. `;
+    const message = `Hi, I am interested in buying the ${
+      product.name
+    } fan. Quantity: ${product.quantity}. Price: PKR ${
+      product.price * product.quantity
+    }. `;
     const whatsappNumber = "923226409363"; // Replace with your actual WhatsApp number (with country code)
-    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(whatsappUrl, "_blank");
   };
 
@@ -67,7 +67,9 @@ const ProductGrid = () => {
             {categories.map((category, index) => (
               <li key={index} className="py-1">
                 <Link
-                  href={`/category/${category.toLowerCase().replace(/ /g, "-")}`}
+                  href={`/category/${category
+                    .toLowerCase()
+                    .replace(/ /g, "-")}`}
                   className="text-gray-700 hover:text-blue-500 cursor-pointer"
                 >
                   {category}
@@ -77,12 +79,9 @@ const ProductGrid = () => {
           </ul>
         </aside>
 
-        {/* Main Content */}
         <main className="w-full md:w-3/4">
           <div className="flex justify-between items-center mb-4">
-            <h1>
-              Bracket Fans {/* Make total count dynamic */}
-            </h1>
+            <h1>Bracket Fans {/* Make total count dynamic */}</h1>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -91,18 +90,19 @@ const ProductGrid = () => {
                 key={product.name}
                 className="border rounded-lg shadow-md p-4 flex flex-col justify-between"
               >
-                <Link href={product.link}>
-                  <div className="relative h-48 mb-4 overflow-hidden">
-                    <Image
-                      src={product.image}
-                      alt={product.name}
-                      layout="fill"
-                      objectFit="contain"
-                      className="rounded-t-lg cursor-pointer"
-                    />
-                  </div>
-                </Link>
-                <h2 className="text-lg font-medium mb-2 text-center">{product.name}</h2>
+                <div className="relative h-48 mb-4 overflow-hidden">
+                  <Image
+                    src={product.image}
+                    alt={product.name}
+                    layout="fill"
+                    objectFit="contain"
+                    className="rounded-t-lg cursor-pointer"
+                  />
+                </div>
+
+                <h2 className="text-lg font-medium mb-2 text-center">
+                  {product.name}
+                </h2>
                 <p className="text-gray-600 mb-4 text-center">
                   PKR {product.price * (product.quantity || 1)}
                 </p>

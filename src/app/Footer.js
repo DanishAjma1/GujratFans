@@ -30,7 +30,7 @@ export default function Footer() {
                 <Link href={"/category/pedestal-fans"}>Pedestal Fans</Link>
               </li>
               <li>
-                <Link href={"/category/Exhaust-fans"}>Exhaust Fans</Link>
+                <Link href={"/category/exhaust-fans"}>Exhaust Fans</Link>
               </li>
             </ul>
           </div>
@@ -38,10 +38,10 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-gray-400">
               <li>
-                <Link href={"/"}>About Us</Link>
+                <Link href={"/About"}>About Us</Link>
               </li>
               <li>
-                <Link href={"./Contact"}>Contact</Link>
+                <Link href={"/Contact"}>Contact</Link>
               </li>
             </ul>
           </div>
@@ -50,7 +50,7 @@ export default function Footer() {
             <p className="text-gray-400">
               Plot No. 12, Industrial Area
               <br />
-              Rajkot, Gujarat - 360003
+              Gujart - 360003
               <br />
               Phone: +91 98765 43210
             </p>

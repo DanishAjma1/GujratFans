@@ -48,19 +48,17 @@ export default function Page() {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
-        {/* Hero Section */}
         <section className="bg-custom-blue text-white py-16">
           <div className="container mx-auto px-4 text-center">
             <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
               Welcome to Gujarat Fans
             </h1>
             <p className="text-xl sm:text-2xl md:text-3xl">
-              Pakistan's Fan Manufacturer Since 
+              Pakistan's Fan Manufacturer Since
             </p>
           </div>
         </section>
 
-        {/* About Section */}
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
             <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">
@@ -87,14 +85,12 @@ export default function Page() {
                     </svg>
                     ISO 9001 Certified Manufacturing
                   </li>
-                  {/* Add other list items similarly */}
                 </ul>
               </div>
             </div>
           </div>
         </section>
 
-        {/* Feature Section */}
         <section>
           <div className="flex flex-wrap justify-center gap-6 p-10 bg-white">
             {features.map((feature, index) => (
@@ -117,10 +113,11 @@ export default function Page() {
           </div>
         </section>
 
-        {/* Product Categories */}
         <section className="py-12">
           <div className="container mx-auto p-4">
-            <h1 className="text-2xl sm:text-3xl font-bold mb-4">PRODUCT LIST</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold mb-4">
+              PRODUCT LIST
+            </h1>
             <p className="text-gray-600 mb-4">
               There are many variations of passages of brands available
             </p>
@@ -154,7 +151,6 @@ export default function Page() {
             </div>
           </div>
         </section>
-
       </main>
     </div>
   );
