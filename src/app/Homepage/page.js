@@ -48,26 +48,28 @@ export default function Page() {
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
-        <section className="bg-custom-blue text-white py-16">
+        <section className="bg-gray-800 text-white py-16">
           <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4">
-              Welcome to Gujarat Fans
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 font-serif">
+              Welcome to Gujrat Fans
             </h1>
-            <p className="text-xl sm:text-2xl md:text-3xl">
-              Pakistan's Fan Manufacturer Since
-            </p>
+            <div className="w-2/3 align-center mx-auto">
+              <p className="text-xl sm:text-2xl font-mono">
+                Pakistan Fan Manufacturer Since 1985
+              </p>
+            </div>
           </div>
         </section>
 
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8">
-              About Gujarat Fans
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 underline hover:text-blue-800">
+              About Gujrat Fans
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-3 mt-10">
               <div className="prose max-w-none">
-                <p className="text-lg">
-                  Established in 1985, Gujarat Fans has been a pioneer in air
+                <p className="text-lg mt-5 font-thin">
+                  Established in 1985, Gujrat Fans has been a pioneer in air
                   circulation solutions for both residential and industrial
                   applications...
                 </p>
@@ -89,44 +91,45 @@ export default function Page() {
               </div>
             </div>
           </div>
-        </section>
 
-        <section>
-          <div className="flex flex-wrap justify-center gap-6 p-10 bg-white">
-            {features.map((feature, index) => (
-              <div
-                key={index}
-                className="bg-gray-800 text-white p-6 rounded-lg w-full sm:w-80 text-center shadow-lg"
-              >
-                <div className="flex justify-center mb-4">
-                  <Image
-                    src="/mainlogo.png"
-                    alt="GFC Logo"
-                    width={130}
-                    height={80}
-                  />
+          <section>
+            <div className="flex flex-wrap justify-center gap-6 p-10 mt-10">
+              {features.map((feature, index) => (
+                <div
+                  key={index}
+                  className="bg-gray-800 text-white p-6 rounded-lg w-full sm:w-80 text-center shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+                >
+                  <div className="flex justify-center mb-4">
+                    <Image
+                      src="/mainlogo.png"
+                      alt="GFC Logo"
+                      width={130}
+                      height={80}
+                    />
+                  </div>
+                  <h3 className="text-lg font-bold">{feature.title}</h3>
+                  <p className="text-sm mt-2">{feature.description}</p>
                 </div>
-                <h3 className="text-lg font-bold">{feature.title}</h3>
-                <p className="text-sm mt-2">{feature.description}</p>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </section>
         </section>
 
         <section className="py-12">
           <div className="container mx-auto p-4">
-            <h1 className="text-2xl sm:text-3xl font-bold mb-4">
-              PRODUCT LIST
-            </h1>
-            <p className="text-gray-600 mb-4">
-              There are many variations of passages of brands available
-            </p>
-
+            <div className="text-center">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-4 align-center underline hover:text-blue-800">
+                Our Top Products
+              </h1>
+              <p className="text-lg mb-5 font-thin">
+                There are many variations of that are top of our brand.
+              </p>
+            </div>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
               {products.map((product, index) => (
                 <div
                   key={index}
-                  className="border rounded-lg shadow-md p-4 relative"
+                  className="border rounded-lg shadow-md p-4 relative hover:scale-105 transform transition duration-300 ease-in-out"
                 >
                   <Link href={product.link} passHref>
                     <div className="relative h-48 mb-4 overflow-hidden">
@@ -142,7 +145,7 @@ export default function Page() {
                   <h2 className="text-lg font-medium mb-2">{product.name}</h2>
                   <p className="text-gray-600 mb-4">{product.price}</p>
                   <Link href={product.link} passHref>
-                    <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                    <button className="bg-gray-800 hover:bg-transparent hover:text-black text-white font-bold py-2 px-4 rounded">
                       BUY NOW
                     </button>
                   </Link>
