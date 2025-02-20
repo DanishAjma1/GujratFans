@@ -4,17 +4,17 @@ import Image from "next/image";
 const categories = [
   {
     name: "Ceiling Fans AC",
-    image: "/Icons/mainlogo.png",
+    image: "/Images/ceiling-fan-ac.png",
     link: "/category/ceiling-fans-ac",
   },
   {
     name: "Ceiling Fans DC",
-    image: "/images/bracket_fan_icon.png",
+    image: "/Images/ceiling-fan-dc.png",
     link: "/category/ceiling-fans-dc",
   },
   {
     name: "Ceiling Fans AC-DC",
-    image: "/images/mist_fan_icon.png",
+    image: "/Images/ceiling-fan-ac-dc.png",
     link: "/category/ceiling-fans-ac-dc",
   },
   {
@@ -39,7 +39,9 @@ export default function ProductCard() {
     <div>
       <section>
         <div className="container mx-auto p-4">
-          <h1 className="text-2xl font-bold mb-6 text-center">Fan Categories</h1>
+          <h1 className="text-2xl font-bold mb-6 text-center">
+            Fan Categories
+          </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
             {categories.map((category, index) => (
               <Link key={index} href={category.link} passHref>
