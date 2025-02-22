@@ -23,7 +23,7 @@ export default function Navbar() {
             className="mr-2"
           />
           <Link href="/" className="text-2xl font-bold">
-            Gujarat Fans
+            Gujrat Fans
           </Link>
         </div>
 
@@ -61,6 +61,9 @@ export default function Navbar() {
           </Link>
           <Link href="/Contact" className="hover:text-blue-300 hover:px-1">
             Contact
+          </Link>
+          <Link href="/SignIn" className="hover:text-blue-300 hover:px-1">
+            SignIn
           </Link>
         </div>
       </div>
