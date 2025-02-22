@@ -6,19 +6,29 @@ import Link from "next/link";
 const ProductGrid = () => {
   const [products, setProducts] = useState([
     {
-      name: "SAPPHIRE",
-      image: "/Icons/mainlogo.png",
+      name: "CLASSIC MODEL   (OFF-WHITE)",
+      image: "/Images/Classic_model_off_white.png",
       price: 9535,
     },
     {
-      name: "MARVEL",
-      image: "/images/marvel_fan.jpg",
+      name: "CLASSIC MODEL   (BLACK)",
+      image: "/Images/Classic_model_black.png",
       price: 9195,
     },
     {
-      name: "ALPHA WOODEN",
-      image: "/images/alpha_wooden_fan.jpg",
+      name: "N M MODEL",
+      image: "/Images/NM_model.png",
       price: 9995,
+    },
+    {
+      name: "FANCY GOLD   (OFF-WHITE)",
+      image: "/Images/Fancy_Gold_off_white.png",
+      price: 9535,
+    },
+    {
+      name: "FANCY GOLD   (BLACK)",
+      image: "/Images/Fancy_Gold.png",
+      price: 9535,
     },
   ]);
 
