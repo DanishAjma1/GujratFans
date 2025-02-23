@@ -71,7 +71,7 @@ export default function Page() {
 
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 underline">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 ">
               About Gujrat Fans
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-3 mt-10">
@@ -130,7 +130,7 @@ export default function Page() {
         <section className="py-12">
           <div className="container mx-auto p-4">
             <div className="text-center">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-4 align-center underline">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-4 align-center">
                 Our Top Products
               </h1>
               <p className="text-lg mb-5 font-thin">

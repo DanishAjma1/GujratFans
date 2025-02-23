@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-8 mt-12">
+    <footer className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-8 mt-0">
       <div className="container mx-auto px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
@@ -11,26 +11,26 @@ export default function Footer() {
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Products</h4>
-            <ul className="space-y-2 text-blue-100">
-              <li>
-                <Link href={"/category/ceiling-fans-ac"}>Ceiling Fans AC</Link>
+            <ul className="space-y-2 text-blue-100 ">
+              <li >
+                <Link href={"/category/ceiling-fans-ac"} className="hover:text-blue-300">Ceiling Fans AC</Link>
               </li>
               <li>
-                <Link href={"/category/ceiling-fans-dc"}>Ceiling Fans DC</Link>
+                <Link href={"/category/ceiling-fans-dc"} className="hover:text-blue-300" >Ceiling Fans DC</Link>
               </li>
               <li>
-                <Link href={"/category/ceiling-fans-ac-dc"}>
+                <Link href={"/category/ceiling-fans-ac-dc"} className="hover:text-blue-300">
                   Ceiling Fans AC-DC
                 </Link>
               </li>
               <li>
-                <Link href={"/category/bracket-fans"}>Bracket Fans</Link>
+                <Link href={"/category/bracket-fans"} className="hover:text-blue-300">Bracket Fans</Link>
               </li>
               <li>
-                <Link href={"/category/pedestal-fans"}>Pedestal Fans</Link>
+                <Link href={"/category/pedestal-fans"} className="hover:text-blue-300">Pedestal Fans</Link>
               </li>
               <li>
-                <Link href={"/category/exhaust-fans"}>Exhaust Fans</Link>
+                <Link href={"/category/exhaust-fans"} className="hover:text-blue-300">Exhaust Fans</Link>
               </li>
             </ul>
           </div>
@@ -38,21 +38,23 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-blue-100">
               <li>
-                <Link href={"/About"}>About Us</Link>
+                <Link href={"/About"} className="hover:text-blue-300">About Us</Link>
               </li>
               <li>
-                <Link href={"/Contact"}>Contact</Link>
+                <Link href={"/Contact"} className="hover:text-blue-300">Contact</Link>
               </li>
             </ul>
           </div>
           <div>
             <h4 className="text-lg font-semibold mb-4">Contact</h4>
             <p className="text-blue-100">
-              Plot No. 12, Industrial Area
+              Grand Trunk Road, Kalra Khasa,
               <br />
-              Gujart - 360003
+              Gujart - 50700
               <br />
-              Phone: +91 98765 43210
+              Tel: 053-3707581
+              <br />
+              Phone: 0333-8407126
             </p>
           </div>
         </div>
