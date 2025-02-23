@@ -6,15 +6,18 @@ import { useRouter } from "next/navigation";
 
 const features = [
   {
+    image: "/Icons/idea_7636263.png",
     title: "INNOVATION",
     description: "Our company is always on the lookout for new technology",
   },
   {
+    image: "/Icons/quality_10991786.png",
     title: "QUALITY PRODUCTS",
     description:
       "We satisfy our customers through our supreme quality products",
   },
   {
+    image: "/Icons/hand_16288493.png",
     title: "VARIETY",
     description:
       "Gujrat Fans offers the largest variety of customizable products.",
@@ -80,24 +83,29 @@ export default function Page() {
     }
   };
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="min-h-screen flex flex-col bg-gray-100">
       <main className="flex-grow">
-        <section className="bg-gray-800 text-white py-16">
-          <div className="container mx-auto px-4 text-center">
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-4 font-serif">
+        <section className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-20 text-center shadow-lg">
+          <div className="flex flex-col items-center">
+            <Image
+              alt="Gujrat Fans Logo"
+              height={300}
+              width={310}
+              src="/Icons/mainlogo.png"
+              className="mb-4"
+            />
+            <h1 className="text-5xl font-extrabold font-serif">
               Welcome to Gujrat Fans
             </h1>
-            <div className="w-2/3 align-center mx-auto">
-              <p className="text-xl sm:text-2xl font-mono">
-                Pakistan Fan Manufacturer Since 1985
-              </p>
-            </div>
+            <p className="text-xl font-mono mt-3">
+              Pakistan Fan Manufacturer Since 1985
+            </p>
           </div>
         </section>
 
         <section className="py-12 bg-gray-50">
           <div className="container mx-auto px-4">
-            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 underline hover:text-blue-800">
+            <h2 className="text-3xl sm:text-4xl font-bold text-center mb-8 underline">
               About Gujrat Fans
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mx-3 mt-10">
@@ -125,34 +133,38 @@ export default function Page() {
               </div>
             </div>
           </div>
+          </section>
 
-          <section>
-            <div className="flex flex-wrap justify-center gap-6 p-10 mt-10">
+        <section className="py-16  bg-gradient-to-r from-blue-700 to-blue-900 ">
+          <div className="container mx-auto px-6 text-center ">
+            <h2 className="text-3xl font-bold text-white mb-8">
+              Why Choose Us?
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
               {features.map((feature, index) => (
                 <div
                   key={index}
-                  className="bg-gray-800 text-white p-6 rounded-lg w-full sm:w-80 text-center shadow-lg hover:scale-105 transform transition duration-300 ease-in-out"
+                  className="bg-white p-6 rounded-lg shadow-xl transform hover:scale-105 transition duration-300"
                 >
-                  <div className="flex justify-center mb-4">
-                    <Image
-                      src="/mainlogo.png"
-                      alt="GFC Logo"
-                      width={130}
-                      height={80}
-                    />
-                  </div>
-                  <h3 className="text-lg font-bold">{feature.title}</h3>
-                  <p className="text-sm mt-2">{feature.description}</p>
+                  <Image
+                    src={feature.image}
+                    alt={feature.title}
+                    width={80}
+                    height={80}
+                    className="mx-auto"
+                  />
+                  <h3 className="text-xl font-bold mt-4">{feature.title}</h3>
+                  <p className="text-gray-600 mt-2">{feature.description}</p>
                 </div>
               ))}
             </div>
-          </section>
+          </div>
         </section>
 
         <section className="py-12">
           <div className="container mx-auto p-4">
             <div className="text-center">
-              <h1 className="text-2xl sm:text-3xl font-bold mb-4 align-center underline hover:text-blue-800">
+              <h1 className="text-2xl sm:text-3xl font-bold mb-4 align-center underline">
                 Our Top Products
               </h1>
               <p className="text-lg mb-5 font-thin">
@@ -179,7 +191,7 @@ export default function Page() {
                   <h2 className="text-lg font-medium mb-2">{product.name}</h2>
                   <p className="text-gray-600 mb-4">{product.price}</p>
                   <Link href={product.link} passHref>
-                    <button className="bg-gray-800 hover:bg-transparent hover:text-black text-white font-bold py-2 px-4 rounded">
+                    <button className="mt-4 bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-900 transition duration-300">
                       BUY NOW
                     </button>
                   </Link>
@@ -189,7 +201,6 @@ export default function Page() {
           </div>
         </section>
       </main>
-      
       {showSession()}
     </div>
   );

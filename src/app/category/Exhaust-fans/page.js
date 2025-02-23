@@ -28,7 +28,7 @@ const ProductGrid = () => {
     "ceiling-fans-dc",
     "bracket-fans",
     "pedestal-fans",
-    "Exhaust-fans",
+    "exhaust-fans",
   ];
 
   const handleQuantityChange = (index, delta) => {
@@ -99,7 +99,6 @@ const ProductGrid = () => {
                     className="rounded-t-lg cursor-pointer"
                   />
                 </div>
-
                 <h2 className="text-lg font-medium mb-2 text-center">
                   {product.name}
                 </h2>

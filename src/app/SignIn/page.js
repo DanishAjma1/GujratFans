@@ -56,7 +56,7 @@ export default function SignIn() {
         },
         body: JSON.stringify(signUpUser),
       });
-      if (res.ok) {
+      if (res.status === 200) {
         toast.success(
           "Account Created Successfully\nWe have sent you an email to verify your account"
         );
