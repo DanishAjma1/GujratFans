@@ -1,5 +1,4 @@
 import Link from "next/link";
-
 export default function Footer() {
   return (
     <footer className="bg-gradient-to-r from-blue-700 to-blue-900 text-white py-8 mt-0">
