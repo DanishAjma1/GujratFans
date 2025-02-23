@@ -1,5 +1,8 @@
+"use client";
 import Image from "next/image";
 import Link from "next/link";
+import { signOut, useSession } from "next-auth/react";
+import { useRouter } from "next/navigation";
 
 const features = [
   {
@@ -45,6 +48,37 @@ const products = [
 ];
 
 export default function Page() {
+  
+  const { status } = useSession();
+
+  const router = useRouter();
+  const showSession = () => {
+    if (status === "authenticated") {
+      return (
+        <button
+          className="border border-solid border-black rounded"
+          onClick={() => {
+            signOut({ redirect: false }).then(() => {
+              router.push("/");
+            });
+          }}
+        >
+          Sign Out
+        </button>
+      );
+    } else if (status === "loading") {
+      return <span className="text-[#888] text-sm mt-7">Loading...</span>;
+    } else {
+      return (
+        <Link
+          href="/pages/signIn"
+          className="border border-solid border-black rounded"
+        >
+          Sign In
+        </Link>
+      );
+    }
+  };
   return (
     <div className="min-h-screen flex flex-col">
       <main className="flex-grow">
@@ -155,6 +189,8 @@ export default function Page() {
           </div>
         </section>
       </main>
+      
+      {showSession()}
     </div>
   );
 }
