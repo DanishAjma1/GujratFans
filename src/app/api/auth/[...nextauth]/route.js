@@ -1,7 +1,7 @@
 import NextAuth from "next-auth";
 import User from "../../../models/user";
 import credentials from "next-auth/providers/credentials";
-import bcrypt from "bcrypt";
+import bcrypt from "bcryptjs";
 import { connectMongoDB } from "../../../lib/mongoDB";
 
 export const authOptions = {
@@ -62,7 +62,7 @@ export const authOptions = {
     },
   },
   pages: {
-    signIn: "/pages/SignIn",
+    signIn: "/SignIn",
   },
 };
 
