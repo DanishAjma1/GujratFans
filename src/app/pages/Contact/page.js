@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function ContactPage() {
   return (
-    <div className="bg-gradient-to-b from-blue-500 to-blue-300 min-h-screen flex flex-col items-center py-12">
+    <div className="bg-gradient-to-b from-blue-500 to-blue-300 min-h-screen flex flex-col items-center py-12 md:p-12">
       <section className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-2xl mx-auto text-center transform transition-all duration-500 hover:shadow-3xl">
         {/* Title Section */}
         <h1 className="text-5xl font-extrabold text-gray-800 tracking-wide">
