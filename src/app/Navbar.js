@@ -54,7 +54,7 @@ export default function Navbar() {
 
         {/* Navigation Links (Desktop) */}
         <div className="hidden md:flex space-x-6">
-          {["Home", "Products", "About", "Contact","SignIn"].map((item) => (
+          {["home", "products", "about", "contact","signIn"].map((item) => (
             <Link
               key={item}
               href={`/${item === "Home" ? "" : item.toLowerCase()}`}
@@ -74,7 +74,7 @@ export default function Navbar() {
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className="md:hidden overflow-hidden bg-gradient-to-r from-blue-700 to-blue-900"
       >
-        {["Home", "Products", "About", "Contact","SignIn"].map((item) => (
+        {["home", "products", "about", "contact","signIn"].map((item) => (
           <motion.div
             key={item}
             whileHover={{ scale: 1.05 }}
