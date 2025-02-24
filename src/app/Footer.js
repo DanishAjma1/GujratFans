@@ -13,24 +13,24 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Products</h4>
             <ul className="space-y-2 text-blue-100 ">
               <li >
-                <Link href={"/category/ceiling-fans-ac"} className="hover:text-blue-300">Ceiling Fans AC</Link>
+                <Link href={"/pages/category/ceiling-fans-ac"} className="hover:text-blue-300">Ceiling Fans AC</Link>
               </li>
               <li>
-                <Link href={"/category/ceiling-fans-dc"} className="hover:text-blue-300" >Ceiling Fans DC</Link>
+                <Link href={"/pages/category/ceiling-fans-dc"} className="hover:text-blue-300" >Ceiling Fans DC</Link>
               </li>
               <li>
-                <Link href={"/category/ceiling-fans-ac-dc"} className="hover:text-blue-300">
+                <Link href={"/pages/category/ceiling-fans-ac-dc"} className="hover:text-blue-300">
                   Ceiling Fans AC-DC
                 </Link>
               </li>
               <li>
-                <Link href={"/category/bracket-fans"} className="hover:text-blue-300">Bracket Fans</Link>
+                <Link href={"/pages/category/bracket-fans"} className="hover:text-blue-300">Bracket Fans</Link>
               </li>
               <li>
-                <Link href={"/category/pedestal-fans"} className="hover:text-blue-300">Pedestal Fans</Link>
+                <Link href={"/pages/category/pedestal-fans"} className="hover:text-blue-300">Pedestal Fans</Link>
               </li>
               <li>
-                <Link href={"/category/exhaust-fans"} className="hover:text-blue-300">Exhaust Fans</Link>
+                <Link href={"/pages/category/exhaust-fans"} className="hover:text-blue-300">Exhaust Fans</Link>
               </li>
             </ul>
           </div>
@@ -38,10 +38,10 @@ export default function Footer() {
             <h4 className="text-lg font-semibold mb-4">Company</h4>
             <ul className="space-y-2 text-blue-100">
               <li>
-                <Link href={"/About"} className="hover:text-blue-300">About Us</Link>
+                <Link href={"/pages/about"} className="hover:text-blue-300">About Us</Link>
               </li>
               <li>
-                <Link href={"/Contact"} className="hover:text-blue-300">Contact</Link>
+                <Link href={"/pages/contact"} className="hover:text-blue-300">Contact</Link>
               </li>
             </ul>
           </div>
