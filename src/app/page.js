@@ -1,7 +1,8 @@
-import Image from "next/image";
+"use client";
+
 import HomePage from "./pages/home/page";
 export default function Home() {
   return (
-    <HomePage/>
+      <HomePage />
   );
 }

@@ -8,7 +8,9 @@ const ProductGrid = () => {
     {
       name: "CLASSIC MODEL   (OFF-WHITE)",
       image: "/Images/Classic_model_off_white.png",
+
       price: 5500,
+
     },
     {
       name: "CLASSIC MODEL   (BLACK)",

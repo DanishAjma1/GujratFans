@@ -56,4 +56,4 @@ const authOptions = {
 
 // Correctly export the handler for Next.js App Router
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST }; // ✅ Fix for App Router
+export { handler as GET, handler as POST };
