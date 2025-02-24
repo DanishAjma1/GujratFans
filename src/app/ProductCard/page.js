@@ -19,17 +19,17 @@ const categories = [
   },
   {
     name: "Bracket Fans",
-    image: "/images/mist_fan_icon.png",
+    image: "/Images/bracket_fan.png",
     link: "/category/bracket-fans",
   },
   {
     name: "Pedestal Fans",
-    image: "/images/mist_fan_icon.png",
+    image: "/Images/pedestal_fan.png",
     link: "/category/pedestal-fans",
   },
   {
     name: "Exhaust Fans",
-    image: "/images/mist_fan_icon.png",
+    image: "/Images/exhaust_fan.png",
     link: "/category/exhaust-fans",
   },
 ];

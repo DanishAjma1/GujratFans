@@ -55,8 +55,8 @@ export default function Page() {
           <div className="flex flex-col items-center">
             <Image
               alt="Gujrat Fans Logo"
-              height={300}
-              width={310}
+              height={310}
+              width={335}
               src="/Icons/mainlogo.png"
               className="mb-4"
             />
