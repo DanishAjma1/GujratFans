@@ -67,7 +67,7 @@ const ProductGrid = () => {
             {categories.map((category, index) => (
               <li key={index} className="py-1">
                 <Link
-                  href={`/category/${category
+                  href={`/pages/category/${category
                     .toLowerCase()
                     .replace(/ /g, "-")}`}
                   className="text-gray-700 hover:text-blue-500 cursor-pointer"

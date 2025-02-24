@@ -7,7 +7,7 @@ const ProductGrid = () => {
   const [products, setProducts] = useState([
     {
       name: "SAPPHIRE",
-      image: "/mainlogo.png",
+      image: "/Icons/mainlogo.png",
       price: 9535,
     },
     {
@@ -67,7 +67,7 @@ const ProductGrid = () => {
             {categories.map((category, index) => (
               <li key={index} className="py-1">
                 <Link
-                  href={`/category/${category
+                  href={`/pages/category/${category
                     .toLowerCase()
                     .replace(/ /g, "-")}`}
                   className="text-gray-700 hover:text-blue-500 cursor-pointer"
@@ -79,9 +79,10 @@ const ProductGrid = () => {
           </ul>
         </aside>
 
+        {/* Main Content */}
         <main className="w-full md:w-3/4">
           <div className="flex justify-between items-center mb-4">
-            <h1>Exhaust Fans {/* Make total count dynamic */}</h1>
+            <h1>ceiling Fans DC</h1>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -99,6 +100,7 @@ const ProductGrid = () => {
                     className="rounded-t-lg cursor-pointer"
                   />
                 </div>
+
                 <h2 className="text-lg font-medium mb-2 text-center">
                   {product.name}
                 </h2>
