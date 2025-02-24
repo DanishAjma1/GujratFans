@@ -2,6 +2,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -11,7 +12,7 @@ export default function Navbar() {
   };
 
   return (
-    <nav className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-4">
+    <nav className="bg-gradient-to-r from-blue-700 to-blue-900 text-white p-4 border-b-2 border-blue-400">
       <div className="container mx-auto px-4 flex justify-between items-center">
         {/* Logo & Brand Name */}
         <div className="flex items-center">
@@ -25,7 +26,7 @@ export default function Navbar() {
               className="mr-2"
             />
           </div>
-          {/* Brand Name (Always Visible) */}
+          {/* Brand Name */}
           <Link href="/" className="text-2xl font-bold">
             Gujrat Fans
           </Link>
@@ -34,10 +35,13 @@ export default function Navbar() {
         {/* Mobile Menu Button */}
         <button className="md:hidden" onClick={toggleMenu}>
           <svg
-            className="w-6 h-6"
+            className="w-6 h-6 transition-transform duration-300"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
+            style={{
+              transform: isMenuOpen ? "rotate(90deg)" : "rotate(0deg)",
+            }}
           >
             <path
               strokeLinecap="round"
@@ -48,62 +52,44 @@ export default function Navbar() {
           </svg>
         </button>
 
-        {/* Navigation Links */}
-        <div
-          className={`hidden md:flex space-x-6 ${
-            isMenuOpen ? "block" : ""
-          } md:block`}
-        >
-          <Link href="/" className="hover:text-blue-300">
-            Home
-          </Link>
-          <Link href="/ProductCard" className="hover:text-blue-300">
-            Products
-          </Link>
-          <Link href="/About" className="hover:text-blue-300">
-            About
-          </Link>
-          <Link href="/Contact" className="hover:text-blue-300">
-            Contact
-          </Link>
+        {/* Navigation Links (Desktop) */}
+        <div className="hidden md:flex space-x-6">
+          {["Home", "Products", "About", "Contact","SignIn"].map((item) => (
+            <Link
+              key={item}
+              href={`/${item === "Home" ? "" : item.toLowerCase()}`}
+              className="relative text-white hover:text-blue-300 transition duration-300 group"
+            >
+              {item}
+              <span className="absolute left-1/2 bottom-[-2px] w-0 h-[2px] bg-blue-300 transition-all duration-300 group-hover:w-full group-hover:left-0"></span>
+            </Link>
+          ))}
         </div>
       </div>
 
       {/* Mobile Menu */}
-      <div
-        className={`md:hidden ${
-          isMenuOpen ? "block" : "hidden"
-        } bg-gradient-to-r from-blue-700 to-blue-900 border border-blue-600`}
+      <motion.div
+        initial={{ opacity: 0, height: 0 }}
+        animate={{ opacity: isMenuOpen ? 1 : 0, height: isMenuOpen ? "auto" : 0 }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="md:hidden overflow-hidden bg-gradient-to-r from-blue-700 to-blue-900"
       >
-        <Link
-          href="/"
-          className="block px-4 py-2 text-white hover:bg-blue-600"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Home
-        </Link>
-        <Link
-          href="/ProductCard"
-          className="block px-4 py-2 text-white hover:bg-blue-600"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Products
-        </Link>
-        <Link
-          href="/About"
-          className="block px-4 py-2 text-white hover:bg-blue-600"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          About
-        </Link>
-        <Link
-          href="/Contact"
-          className="block px-4 py-2 text-white hover:bg-blue-600"
-          onClick={() => setIsMenuOpen(false)}
-        >
-          Contact
-        </Link>
-      </div>
+        {["Home", "Products", "About", "Contact","SignIn"].map((item) => (
+          <motion.div
+            key={item}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.2 }}
+          >
+            <Link
+              href={`/${item === "Home" ? "" : item.toLowerCase()}`}
+              className="block px-4 py-3 text-white hover:bg-blue-600 transition-colors duration-300"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              {item}
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
     </nav>
   );
 }
