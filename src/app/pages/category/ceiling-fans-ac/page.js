@@ -6,19 +6,29 @@ import Link from "next/link";
 const ProductGrid = () => {
   const [products, setProducts] = useState([
     {
-      name: "SAPPHIRE",
-      image: "/Icons/mainlogo.png",
+      name: "CLASSIC MODEL   (OFF-WHITE)",
+      image: "/Images/Classic_model_off_white.png",
       price: 9535,
     },
     {
-      name: "MARVEL",
-      image: "/images/marvel_fan.jpg",
+      name: "CLASSIC MODEL   (BLACK)",
+      image: "/Images/Classic_model_black.png",
       price: 9195,
     },
     {
-      name: "ALPHA WOODEN",
-      image: "/images/alpha_wooden_fan.jpg",
+      name: "N M MODEL",
+      image: "/Images/NM_model.png",
       price: 9995,
+    },
+    {
+      name: "FANCY GOLD   (OFF-WHITE)",
+      image: "/Images/Fancy_Gold_off_white.png",
+      price: 9535,
+    },
+    {
+      name: "FANCY GOLD   (BLACK)",
+      image: "/Images/Fancy_Gold.png",
+      price: 9535,
     },
   ]);
 
@@ -67,7 +77,7 @@ const ProductGrid = () => {
             {categories.map((category, index) => (
               <li key={index} className="py-1">
                 <Link
-                  href={`/category/${category
+                  href={`/pages/category/${category
                     .toLowerCase()
                     .replace(/ /g, "-")}`}
                   className="text-gray-700 hover:text-blue-500 cursor-pointer"
@@ -79,10 +89,9 @@ const ProductGrid = () => {
           </ul>
         </aside>
 
-        {/* Main Content */}
         <main className="w-full md:w-3/4">
           <div className="flex justify-between items-center mb-4">
-            <h1>ceiling Fans DC</h1>
+            <h1>ceiling Fans AC</h1>
           </div>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">

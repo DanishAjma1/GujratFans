@@ -6,29 +6,19 @@ import Link from "next/link";
 const ProductGrid = () => {
   const [products, setProducts] = useState([
     {
-      name: "CLASSIC MODEL   (OFF-WHITE)",
-      image: "/Images/Classic_model_off_white.png",
+      name: "SAPPHIRE",
+      image: "/Icons/mainlogo.png",
       price: 9535,
     },
     {
-      name: "CLASSIC MODEL   (BLACK)",
-      image: "/Images/Classic_model_black.png",
+      name: "MARVEL",
+      image: "/images/marvel_fan.jpg",
       price: 9195,
     },
     {
-      name: "N M MODEL",
-      image: "/Images/NM_model.png",
+      name: "ALPHA WOODEN",
+      image: "/images/alpha_wooden_fan.jpg",
       price: 9995,
-    },
-    {
-      name: "FANCY GOLD   (OFF-WHITE)",
-      image: "/Images/Fancy_Gold_off_white.png",
-      price: 9535,
-    },
-    {
-      name: "FANCY GOLD   (BLACK)",
-      image: "/Images/Fancy_Gold.png",
-      price: 9535,
     },
   ]);
 
@@ -69,15 +59,15 @@ const ProductGrid = () => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-wrap md:flex-nowrap">
+      <div className="flex flex-wrap">
         {/* Sidebar */}
-        <aside className="w-full md:w-1/4 pr-4 mb-4 md:mb-0">
+        <aside className="w-full md:w-1/4 lg:w-1/4 p-4">
           <h2 className="text-lg font-medium mb-2">CATEGORIES</h2>
           <ul>
             {categories.map((category, index) => (
               <li key={index} className="py-1">
                 <Link
-                  href={`/category/${category
+                  href={`/pages/category/${category
                     .toLowerCase()
                     .replace(/ /g, "-")}`}
                   className="text-gray-700 hover:text-blue-500 cursor-pointer"
@@ -89,18 +79,18 @@ const ProductGrid = () => {
           </ul>
         </aside>
 
-        <main className="w-full md:w-3/4">
+        {/* Main Content */}
+        <main className="w-full md:w-3/4 lg:w-3/4 p-4">
           <div className="flex justify-between items-center mb-4">
-            <h1>ceiling Fans AC</h1>
+            <h1>Pedestal Fans {/* Make total count dynamic */}</h1>
           </div>
-
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {products.map((product, index) => (
               <div
                 key={product.name}
-                className="border rounded-lg shadow-md p-4 flex flex-col justify-between"
+                className="border rounded-lg shadow-md p-4 flex flex-col items-center"
               >
-                <div className="relative h-48 mb-4 overflow-hidden">
+                <div className="relative h-48 mb-4 overflow-hidden w-full">
                   <Image
                     src={product.image}
                     alt={product.name}
@@ -110,14 +100,12 @@ const ProductGrid = () => {
                   />
                 </div>
 
-                <h2 className="text-lg font-medium mb-2 text-center">
-                  {product.name}
-                </h2>
-                <p className="text-gray-600 mb-4 text-center">
+                <h2 className="text-lg font-medium mb-2">{product.name}</h2>
+                <p className="text-gray-600 mb-4">
                   PKR {product.price * (product.quantity || 1)}
                 </p>
 
-                <div className="flex items-center justify-center space-x-2 mb-4">
+                <div className="flex items-center space-x-2 mb-4">
                   <button
                     onClick={() => handleQuantityChange(index, -1)}
                     className="bg-gray-200 text-gray-700 px-3 py-1 rounded"
@@ -135,7 +123,7 @@ const ProductGrid = () => {
 
                 <button
                   onClick={() => handleBuyNow(product)}
-                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+                  className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full"
                 >
                   BUY NOW
                 </button>
