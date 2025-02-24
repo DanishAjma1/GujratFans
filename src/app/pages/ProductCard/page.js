@@ -5,32 +5,32 @@ const categories = [
   {
     name: "Ceiling Fans AC",
     image: "/Images/ceiling-fan-ac.png",
-    link: "/category/ceiling-fans-ac",
+    link: "/pages/category/ceiling-fans-ac",
   },
   {
     name: "Ceiling Fans DC",
     image: "/Images/ceiling-fan-dc.png",
-    link: "/category/ceiling-fans-dc",
+    link: "/pages/category/ceiling-fans-dc",
   },
   {
     name: "Ceiling Fans AC-DC",
     image: "/Images/ceiling-fan-ac-dc.png",
-    link: "/category/ceiling-fans-ac-dc",
+    link: "/pages/category/ceiling-fans-ac-dc",
   },
   {
     name: "Bracket Fans",
     image: "/images/mist_fan_icon.png",
-    link: "/category/bracket-fans",
+    link: "/pages/category/bracket-fans",
   },
   {
     name: "Pedestal Fans",
     image: "/images/mist_fan_icon.png",
-    link: "/category/pedestal-fans",
+    link: "/pages/category/pedestal-fans",
   },
   {
     name: "Exhaust Fans",
     image: "/images/mist_fan_icon.png",
-    link: "/category/exhaust-fans",
+    link: "/pages/category/exhaust-fans",
   },
 ];
 

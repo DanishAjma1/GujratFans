@@ -1,11 +1,8 @@
 "use client";
 
-import { SessionProvider } from "next-auth/react";
-import HomePage from "./Homepage/page";
+import HomePage from "./pages/Homepage/page";
 export default function Home() {
   return (
-    <SessionProvider>
       <HomePage />
-    </SessionProvider>
   );
 }
