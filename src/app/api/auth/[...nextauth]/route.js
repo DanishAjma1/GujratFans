@@ -1,8 +1,8 @@
 import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
-import User from "../../../models/user";
+import User from "@/app/models/user";
 import bcrypt from "bcryptjs";
-import connectMongoDB from "../../../lib/mongoDB";
+import connectMongoDB from "@/app/lib/mongoDB";
 
 // Define auth options
 const authOptions = {
@@ -19,7 +19,10 @@ const authOptions = {
 
         if (!user) throw new Error("Wrong Email");
 
-        const passwordMatch = await bcrypt.compare(credentials.password, user.password);
+        const passwordMatch = await bcrypt.compare(
+          credentials.password,
+          user.password
+        );
         if (!passwordMatch) throw new Error("Wrong Password");
 
         return {
@@ -48,7 +51,7 @@ const authOptions = {
       return session;
     },
   },
-  
+
   pages: {
     signIn: "/pages/SignIn",
   },
@@ -56,4 +59,5 @@ const authOptions = {
 
 // Correctly export the handler for Next.js App Router
 const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+export { handler as GET, handler as POST }; // ✅ Fix for App Router
+
