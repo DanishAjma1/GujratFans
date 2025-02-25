@@ -20,7 +20,7 @@ export default function Navbar() {
           <div className="hidden md:block">
             <Image
               src="/Icons/mainlogo.png"
-              alt="GFC Logo"
+              alt="Gujrat fans Logo"
               width={40}
               height={40}
               className="mr-2"

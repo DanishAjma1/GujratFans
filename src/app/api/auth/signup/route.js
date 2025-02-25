@@ -1,25 +1,48 @@
-import connectMongoDB from "@/app/lib/mongoDB";
+
+import { connectDB } from "@/app/lib/mongoDB";
 import User from "@/app/models/user";
 import bcrypt from "bcryptjs";
+import { NextResponse } from "next/server";
 
 export async function POST(req) {
-    try {
-      await connectMongoDB();
-      const {email,password} = await req.json();
-      if(await User.findOne({email: new Object(email)})){
-        return new Response({message:"Email already exist"},{status:400})
-      }
-      const hashedPassword = await bcrypt.hash(password,10);
-      await User.create({email,password: hashedPassword});
-      return new Response({message:"Data inserted successfully."},{
-        status: 201,
-      });
-    } catch (error) {
-      return new Response(
-        JSON.stringify(error.message),
-        {
-          status: 500,
-        }
+  const { name, email, password, confirmPassword } = await req.json();
+  console.log("signUpUser Object:", { name, email, password, confirmPassword });
+  await connectDB();
+
+  try {
+    if (!name || !email || !password || !confirmPassword) {
+      return NextResponse.json(
+        { message: "All fields are required" },
+        { status: 400 }
       );
     }
+
+    const hashedPassword = await bcrypt.hash(password, 12);
+
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return NextResponse.json(
+        { message: "User already exists" },
+        { status: 400 }
+      );
+    }
+
+    const newUser = new User({
+      name,
+      email,
+      password: hashedPassword,
+      confirmPassword,
+    });
+    await newUser.save();
+    return NextResponse.json(
+      { message: "User registered successfully!" },
+      { status: 201 }
+    );
+  } catch (error) {
+    console.error("Error in signup:", error);
+    return NextResponse.json(
+      { message: "Server Error", error: error.message },
+      { status: 500 }
+    );
   }
+}

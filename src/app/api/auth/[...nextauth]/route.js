@@ -2,7 +2,7 @@ import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import User from "@/app/models/user";
 import bcrypt from "bcryptjs";
-import connectMongoDB from "@/app/lib/mongoDB";
+import { connectDB } from "@/app/lib/mongoDB";
 
 // Define auth options
 const authOptions = {
@@ -14,7 +14,7 @@ const authOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
-        await connectMongoDB();
+        await connectDB();
         const user = await User.findOne({ email: credentials?.email });
 
         if (!user) throw new Error("Wrong Email");

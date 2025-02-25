@@ -1,21 +1,18 @@
 import mongoose from "mongoose";
 
-const MONGODB_URI = process.env.MONGODB_URI; // Ensure this is set in .env
-
-if (!MONGODB_URI) throw new Error("Please define MONGODB_URI in .env");
-
-let cached = global.mongoose || { conn: null, promise: null };
-
-async function connectMongoDB() {
-  if (cached.conn) return cached.conn;
-  if (!cached.promise) {
-    cached.promise = mongoose.connect(MONGODB_URI, {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-    });
+const { MONGODB_URI} = process.env;
+export const connectDB = async () => {
+  try {
+    const { connection } = await mongoose.connect(MONGODB_URI);
+    if (connection.readyState === 1)
+    {
+      console.log("Connected to MongoDB");
+      return Promise.resolve(true);
+    }
+  } 
+  catch (error)
+  {
+    console.log(error);
+    return Promise.reject(error);
   }
-  cached.conn = await cached.promise;
-  return cached.conn;
-}
-
-export default connectMongoDB;
+};
