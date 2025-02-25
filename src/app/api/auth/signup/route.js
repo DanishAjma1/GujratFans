@@ -1,5 +1,5 @@
-import  connectMongoDB from "../../../lib/mongoDB";
-import User from "../../../models/user";
+import connectMongoDB from "@/app/lib/mongoDB";
+import User from "@/app/models/user";
 import bcrypt from "bcryptjs";
 
 export async function POST(req) {
