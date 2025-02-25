@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { TextField } from "@mui/material";
 import { toast } from "react-toastify";
+import { motion, AnimatePresence } from "framer-motion";
+import { Mail } from "@/app/lib/send-mail";
 
 export default function SignIn() {
   const router = useRouter();
@@ -19,230 +21,192 @@ export default function SignIn() {
   const [isEmailValid, setIsEmailValid] = useState(null);
   const [emailError, setEmailError] = useState("");
 
-  const emailValidation = (email) => {
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (emailRegex.test(email)) {
-      setIsEmailValid(true);
-      setEmailError("");
+  const emailValidation = (em) => {
+    if (isSignUp) {
+      setSignUpUser({ ...signUpUser, email: em });
     } else {
-      setIsEmailValid(false);
-      setEmailError("Invalid email address");
+      setSignInUser({ ...signInUser, email: em });
     }
-    setSignInUser({ ...signInUser, email });
-    setSignUpUser({ ...signUpUser, email });
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (emailPattern.test(em)) {
+      setEmailError("Email is valid");
+      setIsEmailValid(true);
+    } else {
+      setEmailError("Email is Invalid");
+      setIsEmailValid(false);
+    }
   };
 
   const handleSignIn = async (event) => {
     event.preventDefault();
-    const res = await signIn("credentials", {
-      email: signInUser.email,
-      password: signInUser.password,
-      redirect: false,
-    });
-    if (res?.error) {
-      console.log(res.error);
-    } else {
-      router.push("/");
+    if (emailError === "Email is valid") {
+      if (signInUser.email && signInUser.password) {
+        const res = await signIn("credentials", {
+          email: signInUser.email,
+          password: signInUser.password,
+          redirect: false,
+        });
+        if (res?.error) {
+          console.log(res.error);
+        } else {
+          router.push("/");
+        }
+      }
     }
   };
 
   const handleSignUp = async (event) => {
     event.preventDefault();
-    if (signUpUser.password === signUpUser.confirmPassword) {
-      let res = await fetch("/api/auth/signup", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(signUpUser),
-      });
-      if (res.status === 200) {
-        toast.success(
-          "Account Created Successfully\nWe have sent you an email to verify your account"
-        );
-        await Mail({
-          to: signUpUser.email,
-          subject: "Sign-up successful",
-          message:
-            `Hi ${signUpUser.name},\nYou Signed Up in Gujrat Fan company'App,now you will inform about all updates held in our Company.`,
-        });
+    console.log("signUpUser Object:", signUpUser); // Log the whole object
+    console.log("Confirm Password:", signUpUser.confirmPassword); // Log confirmPassword separately
+    if (emailError === "Email is valid") {
+      if (
+        signUpUser.name &&
+        signUpUser.email &&
+        signUpUser.password &&
+        signUpUser.confirmPassword
+      ) {
+        if (signUpUser.password === signUpUser.confirmPassword) {
+          let res = await fetch("/api/auth/signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(signUpUser),
+          });
+          if (res.ok) {
+            toast.success(
+              "Account Created Successfully. Please check your email for verification."
+            );
+            router.push("/");
+            await Mail({
+              to: signUpUser.email,
+              subject: ` Welcome, ${signUpUser.name}! 🚀`,
+              message: `<p>Dear ${signUpUser.name},</p>
+              <p>Thank you for joining</p>
+            <p>Best regards,</p>
+            <p><strong>Gujrat Fans</strong></p>`,
+            });
+          }
+        } else {
+          toast.error("Passwords do not match");
+        }
       }
-      router.push("/");
-    } else {
-      toast.error("You can't sign up with different passwords");
     }
   };
 
-  const toggleForm = () => {
-    setIsSignUp(!isSignUp);
-  };
-
   return (
-    <div className="w-full flex justify-center">
-      <div className="w-[80%] flex flex-col lg:flex-row mb-20 mt-10 bg-white rounded-2xl shadow-2xl hover:scale-105 transform transition duration-300 ease-in-out">
-        <div className="w-full lg:w-1/2 hidden lg:block">
-          <Image
-            src="/Icons/mainlogo.png"
-            width={500}
-            height={300}
-            alt="Login Side Image"
-            className="w-full h-full rounded-l-2xl"
-          />
-        </div>
-        <div className="w-full lg:w-1/2 rounded-2xl shadow-2xl m-5 hover:scale-105 transform transition duration-300 ease-in-out">
-          {isSignUp ? (
-            <form
-              onSubmit={handleSignUp}
-              className="w-full px-5 lg:px-8 flex flex-col py-5"
-            > 
-              <label className="text-xl lg:text-3xl font-bold font-serif text-center">
-                Sign Up Form
-              </label>
-              <div className="w-full grid grid-cols-1 gap-3 mt-10">
+    <div className="min-h-screen flex flex-col bg-gradient-to-b from-blue-600 to-blue-500">
+      <div className="flex-grow flex items-center justify-center px-4 py-12">
+        <div className="w-full max-w-4xl flex flex-col lg:flex-row bg-white shadow-lg rounded-3xl overflow-hidden">
+          <div className="hidden lg:flex w-1/2 items-center justify-center bg-blue-900 p-10">
+            <Image
+              src="/Icons/mainlogo.png"
+              width={300}
+              height={300}
+              alt="Fan Industry Logo"
+            />
+          </div>
+
+          <div className="w-full lg:w-1/2 p-8">
+            <h2 className="text-center text-2xl font-bold text-gray-800 mb-6">
+              {isSignUp ? "Create an Account" : "Welcome Back"}
+            </h2>
+
+            <AnimatePresence mode="wait">
+              <motion.form
+                key={isSignUp ? "signUp" : "signIn"}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.3 }}
+                onSubmit={isSignUp ? handleSignUp : handleSignIn}
+                className="space-y-4"
+              >
+                {isSignUp && (
+                  <div>
+                    <label className="block text-gray-700">Name</label>
+                    <TextField
+                      fullWidth
+                      variant="outlined"
+                      value={signUpUser.name}
+                      onChange={(e) =>
+                        setSignUpUser({ ...signUpUser, name: e.target.value })
+                      }
+                      required
+                    />
+                  </div>
+                )}
                 <div>
-                  <h1 className="mb-3 ml-1 font-semibold">Name:</h1>
+                  <label className="block text-gray-700">Email</label>
                   <TextField
-                    className="w-full bg-white"
-                    variant="outlined"
-                    value={signUpUser.name}
-                    onChange={(e) =>
-                      setSignUpUser({ ...signUpUser, name: e.target.value })
-                    }
-                    required
-                  />
-                </div>
-                <div>
-                  <h1 className="mb-3 ml-1 font-semibold">Email:</h1>
-                  <TextField
+                    fullWidth
                     type="email"
-                    className="w-full bg-white"
                     variant="outlined"
-                    value={signUpUser.email}
+                    value={isSignUp ? signUpUser.email : signInUser.email}
                     onChange={(e) => emailValidation(e.target.value)}
                     required
                   />
-                  <p
-                    className={`text-md tracking-wider font-serif ${
-                      isEmailValid === true
-                        ? "text-green-500"
-                        : isEmailValid === false
-                          ? "text-red-500"
-                          : ""
-                    }`}
-                  >
-                    {emailError}
-                  </p>
+                  {emailError && (
+                    <p className="text-red-500 text-sm">{emailError}</p>
+                  )}
                 </div>
                 <div>
-                  <h1 className="mb-3 ml-1 font-semibold">Password:</h1>
+                  <label className="block text-gray-700">Password</label>
                   <TextField
+                    fullWidth
                     type="password"
-                    className="w-full bg-white"
                     variant="outlined"
-                    value={signUpUser.password}
+                    value={isSignUp ? signUpUser.password : signInUser.password}
                     onChange={(e) =>
-                      setSignUpUser({ ...signUpUser, password: e.target.value })
+                      isSignUp
+                        ? setSignUpUser({
+                            ...signUpUser,
+                            password: e.target.value,
+                          })
+                        : setSignInUser({
+                            ...signInUser,
+                            password: e.target.value,
+                          })
                     }
                     required
                   />
                 </div>
-                <div>
-                  <h1 className="mb-3 ml-1 font-semibold">Confirm Password:</h1>
-                  <TextField
-                    type="password"
-                    className="w-full bg-white"
-                    variant="outlined"
-                    value={signUpUser.confirmPassword}
-                    onChange={(e) =>
-                      setSignUpUser({
-                        ...signUpUser,
-                        confirmPassword: e.target.value,
-                      })
-                    }
-                    required
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center mt-5">
+                {isSignUp && (
+                  <div>
+                    <label className="block text-gray-700">
+                      Confirm Password
+                    </label>
+                    <TextField
+                      fullWidth
+                      type="password"
+                      variant="outlined"
+                      value={signUpUser.confirmPassword}
+                      onChange={(e) =>
+                        setSignUpUser({
+                          ...signUpUser,
+                          confirmPassword: e.target.value,
+                        })
+                      }
+                      required
+                    />
+                  </div>
+                )}
                 <button
                   type="submit"
-                  className="py-3 px-8 border-black text-white bg-black tracking-wider rounded-xl hover:scale-95"
+                  className="w-full py-3 mt-6 bg-blue-900 text-white rounded-lg hover:bg-blue-700 transition duration-300"
                 >
-                  Sign Up
+                  {isSignUp ? "Sign Up" : "Sign In"}
                 </button>
-              </div>
-            </form>
-          ) : (
-            <form
-              onSubmit={handleSignIn}
-              className="w-full px-5 lg:px-8 flex flex-col py-8"
+              </motion.form>
+            </AnimatePresence>
+
+            <p
+              className="text-center text-gray-600 mt-4 cursor-pointer hover:text-blue-700 transition duration-300"
+              onClick={() => setIsSignUp(!isSignUp)}
             >
-              <label className="text-xl lg:text-3xl font-serif font-bold text-center tracking-wide my-5">
-                Sign In Form
-              </label>
-              <div className="w-full grid grid-cols-1 gap-2 my-5">
-                <div>
-                  <h1 className="mb-3 ml-1 font-semibold">Email:</h1>
-                  <TextField
-                    type="email"
-                    className="w-full bg-white"
-                    variant="outlined"
-                    value={signInUser.email}
-                    onChange={(e) => emailValidation(e.target.value)}
-                    required
-                  />
-                  <p
-                    className={`text-md tracking-wider font-serif ${
-                      isEmailValid === true
-                        ? "text-green-500"
-                        : isEmailValid === false
-                          ? "text-red-500"
-                          : ""
-                    }`}
-                  >
-                    {emailError}
-                  </p>
-                </div>
-                <div>
-                  <h1 className="mb-3 ml-1 font-semibold">Password:</h1>
-                  <TextField
-                    type="password"
-                    className="w-full bg-white"
-                    variant="outlined"
-                    value={signInUser.password}
-                    onChange={(e) =>
-                      setSignInUser({ ...signInUser, password: e.target.value })
-                    }
-                    required
-                  />
-                </div>
-              </div>
-              <div className="flex justify-center">
-                <button
-                  type="submit"
-                  className="py-3 px-10 border-black text-white bg-black tracking-wider rounded-xl hover:scale-95"
-                >
-                  Sign In
-                </button>
-              </div>
-            </form>
-          )}
-          <div className="text-center mb-5">
-            {isSignUp ? (
-              <div>
-                <p onClick={toggleForm}>
-                  Have an Account? Click here to{" "}
-                  <b className="hover:cursor-pointer">Sign In</b>
-                </p>
-              </div>
-            ) : (
-              <div>
-                <p onClick={toggleForm}>
-                  Did not have an Account? Click here to{" "}
-                  <b className="hover:cursor-pointer">Sign Up</b>
-                </p>
-              </div>
-            )}
+              {isSignUp
+                ? "Already have an account? Sign In"
+                : "Don't have an account? Sign Up"}
+            </p>
           </div>
         </div>
       </div>
