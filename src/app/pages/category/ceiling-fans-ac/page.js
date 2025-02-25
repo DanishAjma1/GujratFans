@@ -8,26 +8,68 @@ const ProductGrid = () => {
     {
       name: "CLASSIC MODEL   (OFF-WHITE)",
       image: "/Images/Classic_model_off_white.png",
-      price: 9535,
+
+      price: 5500,
+
     },
     {
       name: "CLASSIC MODEL   (BLACK)",
       image: "/Images/Classic_model_black.png",
-      price: 9195,
+      price: 5500,
     },
     {
-      name: "N M MODEL",
+      name: "FANTESY MODEL (BLACK)",
       image: "/Images/NM_model.png",
-      price: 9995,
+      price: 5500,
+    },
+    {
+      name: "FANTESY MODEL (OFF-WHITE)",
+      image: "/Images/N_M_model_white.png",
+      price: 5500,
     },
     {
       name: "FANCY GOLD   (OFF-WHITE)",
       image: "/Images/Fancy_Gold_off_white.png",
-      price: 9535,
+      price: 5600,
     },
     {
       name: "FANCY GOLD   (BLACK)",
       image: "/Images/Fancy_Gold.png",
+      price: 5600,
+    },
+    {
+      name: "FANCY GOLD ",
+      image: "/Images/FANCY GOLD.png",
+      price: 9535,
+    },
+    {
+      name: "FANCY LAHORE D1",
+      image: "/Images/FANCY LAHORE D1.png",
+      price: 9535,
+    },
+    {
+      name: "FANCY LAHORE D2",
+      image: "/Images/FANCY LAHORE D2.png",
+      price: 9535,
+    },
+    {
+      name: "RIZWAN MODEL ",
+      image: "/Images/RIZWAN MODEL.png",
+      price: 9535,
+    },
+    {
+      name: "JUNAID MODEL",
+      image: "/Images/JUNAID MODEL.png",
+      price: 9535,
+    },
+    {
+      name: "GUJRAT MODEL  (BLUE)",
+      image: "/Images/GUJRAT MODEL  (BLUE).png",
+      price: 9535,
+    },
+    {
+      name: "GUJRAT MODEL   (MEHROON)",
+      image: "/Images/GUJRAT MODEL   (MEHROON).png",
       price: 9535,
     },
   ]);

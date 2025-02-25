@@ -6,7 +6,7 @@ export default function ContactPage() {
       <section className="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-2xl mx-auto text-center transform transition-all duration-500 hover:shadow-3xl">
         {/* Title Section */}
         <h1 className="text-5xl font-extrabold text-gray-800 tracking-wide">
-          📞 Lets Connect!
+          📞 Let's Connect!
         </h1>
         <p className="text-lg text-gray-600 font-medium">
           Have questions about our fan products? Contact us on WhatsApp for
