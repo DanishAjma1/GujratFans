@@ -85,6 +85,8 @@ export default function SignIn() {
             <p>Best regards,</p>
             <p><strong>Gujrat Fans</strong></p>`,
             });
+          } else {
+            toast.error("user already exsists");
           }
         } else {
           toast.error("Passwords do not match");
