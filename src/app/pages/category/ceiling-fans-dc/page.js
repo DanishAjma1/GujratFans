@@ -1,11 +1,14 @@
+// app/pages/category/bracketfans/page.js
 "use client";
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { FiChevronDown } from "react-icons/fi";
+import { FiChevronDown, FiShoppingCart } from "react-icons/fi";
 import { motion } from "framer-motion";
+import { useCart } from "@/app/context/CartContext";
 
 const ProductGrid = () => {
+  const { addToCart } = useCart();
   const [products, setProducts] = useState([
     {
       name: "CLASSIC MODEL (OFF-WHITE)",
@@ -40,24 +43,24 @@ const ProductGrid = () => {
     { name: "FANCY GOLD", image: "/Images/FANCY_GOLD.png", price: 9535 },
     {
       name: "FANCY LAHORE D1",
-      image: "/Images/FANCY_LAHORE_D1.png",
+      image: "/Images/FANCY LAHORE D1.png",
       price: 9535,
     },
     {
       name: "FANCY LAHORE D2",
-      image: "/Images/FANCY_LAHORE_D2.png",
+      image: "/Images/FANCY LAHORE D2.png",
       price: 9535,
     },
-    { name: "RIZWAN MODEL", image: "/Images/RIZWAN_MODEL.png", price: 9535 },
-    { name: "JUNAID MODEL", image: "/Images/JUNAID_MODEL.png", price: 9535 },
+    { name: "RIZWAN MODEL", image: "/Images/RIZWAN MODEL.png", price: 9535 },
+    { name: "JUNAID MODEL", image: "/Images/JUNAID MODEL.png", price: 9535 },
     {
       name: "GUJRAT MODEL (BLUE)",
-      image: "/Images/GUJRAT_MODEL_BLUE.png",
+      image: "/Images/GUJRAT MODEL  (BLUE).png",
       price: 9535,
     },
     {
       name: "GUJRAT MODEL (MEHROON)",
-      image: "/Images/GUJRAT_MODEL_MEHROON.png",
+      image: "/Images/GUJRAT MODEL   (MEHROON).png",
       price: 9535,
     },
   ]);
@@ -109,8 +112,14 @@ const ProductGrid = () => {
     window.open(whatsappUrl, "_blank");
   };
 
+  const handleAddToCart = (product) => {
+    const quantity = product.quantity || 1;
+    addToCart({ ...product, quantity });
+  };
+
   return (
-    <div className=" mx-auto p-4 bg-gradient-to-b from-blue-300 to-blue-500 min-h-screen">
+    <div className="mx-auto p-4 bg-gradient-to-b from-blue-300 to-blue-500 min-h-screen">
+      
       <div className="flex flex-wrap md:flex-nowrap">
         {/* Sidebar */}
         <aside className="w-full md:w-1/4 pr-4 mb-4 md:mb-0">
@@ -158,7 +167,7 @@ const ProductGrid = () => {
         {/* Main Content */}
         <main className="w-full md:w-3/4">
           <h1 className="text-4xl font-bold text-gray-800 mb-8 text-center">
-            Ceiling Fans DC
+            CEILING FANS DC
           </h1>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {products.map((product, index) => (
@@ -200,14 +209,20 @@ const ProductGrid = () => {
                       +
                     </button>
                   </div>
-                  <button
-                    onClick={() => handleBuyNow(product)}
-                    className="w-full bg-blue-500 text-white font-bold py-2 rounded-lg relative overflow-hidden transition-all duration-300 ease-in-out 
-             hover:text-blue-200 before:absolute before:top-0 before:left-0 before:w-full before:h-full before:bg-white/15 
-             before:scale-x-0 hover:before:scale-x-100 before:transition-transform before:duration-500"
-                  >
-                    BUY NOW
-                  </button>
+                  <div className="flex space-x-2 w-full">
+                    <button
+                      onClick={() => handleBuyNow(product)}
+                      className="w-1/2 bg-blue-500 text-white font-bold py-2 rounded-lg hover:bg-blue-600 transition"
+                    >
+                      BUY NOW
+                    </button>
+                    <button
+                      onClick={() => handleAddToCart(product)}
+                      className="w-1/2 bg-green-500 text-white font-bold py-2 rounded-lg hover:bg-green-600 transition"
+                    >
+                      ADD TO CART
+                    </button>
+                  </div>
                 </div>
               </motion.div>
             ))}
