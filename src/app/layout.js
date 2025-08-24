@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { SpeedInsights } from '@vercel/speed-insights/next';
 import { CartProvider } from "./context/CartContext";
 import FloatingCartButton from "./FloatingCartButton";
 import { ToastContainer } from "react-toastify";
@@ -31,6 +32,7 @@ export default function RootLayout({ children }) {
   <ToastContainer />
   {children}
     <FloatingCartButton />
+     <SpeedInsights />
   <Footer />
 </CartProvider>
       </body>
